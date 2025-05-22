@@ -1,19 +1,9 @@
 
-CREATE TABLE blacklisted_tokens (
-    token VARCHAR(255) PRIMARY KEY,
-    blacklistedAt DATETIME NOT NULL,
-    expiresAt DATETIME NOT NULL
+CREATE TABLE wards (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    region VARCHAR(100) NOT NULL
 );
-
-
-CREATE TABLE password_reset_token (
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    token VARCHAR(255) NOT NULL,
-    userID INT NOT NULL,
-    expiryDate DATETIME NOT NULL,
-    FOREIGN KEY (userID) REFERENCES users(userID) ON DELETE CASCADE
-);
-
 
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -26,10 +16,18 @@ CREATE TABLE users (
     FOREIGN KEY (ward_id) REFERENCES wards(id)
 );
 
-CREATE TABLE wards (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
-    region VARCHAR(100) NOT NULL
+CREATE TABLE blacklisted_tokens (
+    token VARCHAR(255) PRIMARY KEY,
+    blacklistedAt DATETIME NOT NULL,
+    expiresAt DATETIME NOT NULL
+);
+
+CREATE TABLE password_reset_token (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    token VARCHAR(255) NOT NULL,
+    userID INT NOT NULL,
+    expiryDate DATETIME NOT NULL,
+    FOREIGN KEY (userID) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE strategic_plans (
