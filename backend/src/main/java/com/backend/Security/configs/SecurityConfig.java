@@ -40,24 +40,7 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Enable CORS
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers(
-                            "/api/auth/**",
-                            "/api/auth/me",
-                            "/api/auth/refresh-token",
-                            "/v3/api-docs/**",
-                            "/swagger-ui/**",
-                            "/swagger-ui.html",
-                            "favicon.ico",
-                            "/error",
-
-                            "/api/v1/reviews/service/{serviceID}",
-                            "/api/v1/reviews/provider/{providerID}",
-
-                            "/api/v1/service-providers",
-                            "/api/v1/service-providers/{id}",
-
-                            "/api/v1/services",
-                            "/api/v1/services/{serviceID}",
-                            "/api/v1/services/provider/{providerID}"
+                            "/api"
                     ).permitAll();
 //                    auth.requestMatchers("/api/v1/users/by-email/{email}").hasAnyAuthority("ROLE_CUSTOMER", "ROLE_VENDOR", "ROLE_ADMIN");
 
